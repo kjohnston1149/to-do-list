@@ -11,15 +11,19 @@
   <body>
     <div class="container">
       <h1 class="jumbotron">WHAT YOU DOIN'</h1>
+      <button id="allButton" type="button" class="btn btn-default">All Items</button>
+      <button id="incompleteButton" type="button" class="btn btn-info">Incompleted Items</button>
+      <button id="completeButton" type="button" class="btn btn-primary">Completed Items</button>
       <form class="form-inline">
         <div class="form-group">
-          <label for="listItem">What do you need to do?</label>
-          <input type="text" class="form-control" id="listItem" placeholder="Type your obligations here">
+          <label for="userInput">What do you need to do?</label>
+          <input type="text" class="form-control" id="userInput" placeholder="Type your obligations here">
         </div>
         <button type="submit" class="btn btn-success" id="submitButton">Add to the list</button>
       </form>
       <ul id="checklist">
       </ul>
+      <button id="saveButton" type="button" class="btn btn-warning">Remove completed items</button>
     </div>
   </body>
 </html>
