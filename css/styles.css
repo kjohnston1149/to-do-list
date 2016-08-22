@@ -2,6 +2,29 @@ li {
   list-style-type: none;
 }
 
+form {
+  margin: 15px;
+}
+
+body {
+  background: lavender;
+}
+.jumbotron {
+  text-align: center;
+}
+
+input[type='checkbox'] {
+  margin: 10px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+#listContainer {
+  text-align: center;
+}
+
 #userInput {
   width: 555px;
 }

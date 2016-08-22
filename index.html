@@ -11,9 +11,11 @@
   <body>
     <div class="container">
       <h1 class="jumbotron">WHAT YOU DOIN'</h1>
-      <button id="allButton" type="button" class="btn btn-default">All Items</button>
-      <button id="incompleteButton" type="button" class="btn btn-info">Incompleted Items</button>
-      <button id="completeButton" type="button" class="btn btn-primary">Completed Items</button>
+      <div class="row">
+        <button id="allButton" type="button" class="btn btn-default col-md-2 col-md-offset-2">All Items</button>
+        <button id="incompleteButton" type="button" class="btn btn-info col-md-2 col-md-offset-1">Incompleted Items</button>
+        <button id="completeButton" type="button" class="btn btn-primary col-md-2 col-md-offset-1">Completed Items</button>
+      </div>
       <form class="form-inline">
         <div class="form-group">
           <label for="userInput">What do you need to do?</label>
@@ -21,10 +23,12 @@
         </div>
         <button type="submit" class="btn btn-success" id="submitButton">Add to the list</button>
       </form>
-      <ul id="checklist">
-      </ul>
-      <button id="removeChecked" type="button" class="btn btn-warning">Remove finished items</button>
-      <button id="removeUnchecked" type="button" class="btn btn-warning">WAIT I'M NOT DONE WITH THAT</button>
+      <div id="listContainer">
+        <ul id="checklist">
+        </ul>
+        <button id="removeChecked" type="button" class="btn btn-warning">Remove finished items</button>
+        <button id="removeUnchecked" type="button" class="btn btn-warning">WAIT I'M NOT DONE WITH THAT</button>
+      </div>
     </div>
   </body>
 </html>
