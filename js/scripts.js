@@ -9,12 +9,22 @@ function Item(name, done) {
   incompleteItems.push(this);
 }
 
-var removeChecked = function() {
+var removeCheckedItems = function() {
   for (var i = 0; i<incompleteItems.length; i++){
     if (incompleteItems[i].itemName == text) {
       incompleteItems[i].done = true;
       completeItems.push(incompleteItems[i]);
       incompleteItems.splice(i, 1);
+    }
+  }
+}
+
+var removeUncheckedItems = function() {
+  for (var i = 0; i<completeItems.length; i++){
+    if (completeItems[i].itemName == text) {
+      completeItems[i].done = false;
+      incompleteItems.push(completeItems[i]);
+      completeItems.splice(i, 1);
     }
   }
 }
@@ -34,16 +44,63 @@ $(document).ready(function() {
     $("#userInput").val("");
   });
 
-  $("#saveButton").click(function(){
+  $("#removeChecked").click(function(){
     $(".listItem").each(function() {
       if ($(this).find(':nth-child(1)').is(":checked")) {
         text = $(this).text();
-        removeChecked();
+        removeCheckedItems();
       }
       $('ul').empty();
       for (var i = 0; i<incompleteItems.length; i++){
-        $('ul').append(("<li class='listItem'><label><input type='checkbox'>" + incompleteItems[i].itemName + "</label></li>"))
+        $('ul').append("<li class='listItem'><label><input type='checkbox'>" + incompleteItems[i].itemName + "</label></li>");
       }
     });
+    $("#removeUnchecked").hide();
+  });
+
+  $("#removeUnchecked").click(function(){
+    $(".listItem").each(function() {
+      if (!$(this).find(':nth-child(1)').is(":checked")) {
+        text = $(this).text();
+        removeUncheckedItems();
+      }
+      $('ul').empty();
+      for (var i = 0; i<completeItems.length; i++){
+        $('ul').append("<li class='listItem'><label><input type='checkbox' checked>" + completeItems[i].itemName + "</label></li>");
+      }
+    });
+    $("#removeChecked").hide();
+  });
+
+
+
+  $("#incompleteButton").click(function() {
+    $('ul').empty();
+    for (var i = 0; i<incompleteItems.length; i++){
+      $('ul').append("<li class='listItem'><label><input type='checkbox'>" + incompleteItems[i].itemName + "</label></li>");
+    }
+    $("#removeChecked").show();
+    $("#removeUnchecked").hide();
+  });
+
+  $("#completeButton").click(function() {
+    $('ul').empty();
+    for (var i = 0; i<completeItems.length; i++){
+      $('ul').append("<li class='listItem'><label><input type='checkbox' checked>" + completeItems[i].itemName + "</label></li>");
+    }
+    $("#removeChecked").hide();
+    $("#removeUnchecked").show();
+  });
+
+  $("#allButton").click(function() {
+    $('ul').empty();
+    for (var i = 0; i<incompleteItems.length; i++){
+      $('ul').append("<li class='listItem'><label><input type='checkbox'>" + incompleteItems[i].itemName + "</label></li>");
+    }
+    for (var i = 0; i<completeItems.length; i++){
+      $('ul').append("<li class='listItem'><label><input type='checkbox' checked>" + completeItems[i].itemName + "</label></li>");
+    }
+    $("#removeChecked").show();
+    $("#removeUnchecked").show();
   });
 });

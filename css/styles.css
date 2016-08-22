@@ -5,3 +5,7 @@ li {
 #userInput {
   width: 555px;
 }
+
+#removeUnchecked {
+  display: none;
+}
